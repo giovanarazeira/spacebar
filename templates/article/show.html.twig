@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Read {{title}} {%endblock%}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+
+    <div>
+
+        <p>
+            Bacon ipsum dolor amet tri-tip shankle prosciutto beef ribs biltong. Rump porchetta tenderloin, kevin buffalo sausage fatback chuck strip steak picanha ham hock. Cow chicken ribeye kielbasa pork loin pork belly short ribs salami. Tri-tip drumstick ribeye tongue cupim fatback ham shank meatball chicken shankle.
+        </p>
+
+        <p>
+            Pork chop pastrami pork belly, buffalo prosciutto spare ribs venison pancetta. Pork chop chuck andouille shoulder biltong kevin. Swine venison salami t-bone sausage. Kielbasa capicola corned beef, jowl buffalo swine short ribs pork loin strip steak cow pig. Cow shoulder pork belly jerky chuck fatback, burgdoggen doner pastrami.
+        </p>
+
+        <p>
+            Filet mignon sirloin pork loin, capicola venison ham hock frankfurter. Meatball pork cupim bacon prosciutto beef kielbasa ribeye meatloaf tenderloin pastrami turducken pork loin shoulder. Prosciutto cow turkey, pork chop pig tongue shankle andouille. Meatball kielbasa turducken, meatloaf shoulder biltong pork chop turkey flank strip steak drumstick capicola jowl tenderloin corned beef. Sausage jerky flank, spare ribs hamburger rump tenderloin ham ribeye chicken picanha tongue.
+        </p>    
+
+    </div>
+
+    <h2>Comments ({{ comments|length}})</h2>
+
+    <ul>
+        {% for comment in comments %} 
+            <li>{{ comment }}</li> 
+            {% endfor %}
+    </ul>
+{% endblock %}
