@@ -11,6 +11,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Description of ArticleController
@@ -21,15 +22,15 @@ class ArticleController extends AbstractController {
 
     /**
      * @return Response
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage() {
-        return new Response('TESTE');
+        return $this->render('article/homepage.html.twig');
     }
 
     /**
      * @return Response
-     * @Route("/news/{slug}")
+     * @Route("/news/{slug}", name="article_show")
      */
     public function show($slug) {
         
@@ -42,8 +43,20 @@ class ArticleController extends AbstractController {
         //return new Response(sprintf('Future page to show the article: %s', $slug));
         return $this->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', ' ', $slug)),
-            'comments' => $comments
+            'comments' => $comments,
+            'slug' => $slug
         ]);
+    }
+    
+    /**
+     * @Route("/news/{slug}/heart", name="article_toggle_heart", methods={"POST"})
+     */
+    public function toggleArticleHeart($slug) {
+        
+        // TODO - actually heart/unheart the article!
+        
+        //return new Response(json_encode(['hearts' => 5]));
+        return new JsonResponse(['hearts' => rand(5,100)]);
     }
 
 }
